@@ -19,7 +19,7 @@ class Tree
     public:
         Tree(int);
         void flipcoin(); //finished
-        void forceflip();
+        bool forceflip();
         void allPossibilities(Node *); //finished
         void probability(int head, int tail);
         void initializeAllPoss(Node*); //finished helper function

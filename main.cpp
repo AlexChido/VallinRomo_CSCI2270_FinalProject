@@ -13,7 +13,7 @@ void displayMenu(){
     cout<<"7. Redo Flip\n";
     cout<<"8. Show Number Of Flips\n";
     cout<<"9. Force Flip\n";
-    cout<<"10. Compares Odd\n";
+    cout<<"10. Compare Odds\n";
     cout<<"11. Quit\n";
 }
 
