@@ -4,18 +4,18 @@
 
 using namespace std;
 
-Tree::Tree(int number)
+Tree::Tree()
 {
     //ctor
 
 }
 
-Tree::Tree()
-{
-    //2nd ctor
 
+void Tree::buildTree(int sizer, Node *root){
+    root->parent = NULL;
+
+    //this is WEIRD... we should add a node every time they flip
 }
-//checking merge capabilities
 
 void Tree::flipcoin(){
 //0 is Tails and 1 is Heads

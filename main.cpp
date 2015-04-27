@@ -25,7 +25,8 @@ void displayMenu(){
 int main()
 {
     string input;
-    Tree *DadTree = new Tree(); //I don-t know if this is the correct way to inititallize the tree
+    Tree *DadTree = new Tree();
+    Node *root = new Node;
 
     displayMenu();
     while(getline(cin,input)){
@@ -34,7 +35,8 @@ int main()
             cout<<"How many tosses do you want to make?\n";
             getline(cin, num);
             int number=atoi(num.c_str());
-
+            DadTree->buildTree(number, root);
+             //I don-t know if this is the correct way to inititallize the tree
             displayMenu();
         }
         if(input == "2"){
