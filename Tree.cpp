@@ -66,7 +66,39 @@ void Tree::printPastFlips(){
 }
 
 void Tree::undoFlip(){
-tracker=tracker->parent;
+    if(tracker->parent != NULL){
+        tracker=tracker->parent;
+        tracker->head = NULL;
+        cout<<"Flip has been undone!"<<endl;
+    }
+    else{
+        cout<<"You haven't flipped a coin yet."<<endl;
+    }
+}
+
+int Tree::countFlips(Node * root){
+    counter = root;
+    int flipCount = 0;
+    if(counter->head != NULL){
+        flipCount++;
+    }
+    else{
+        return flipCount;
+    }
+
+    while(counter->left != NULL ||counter->right != NULL){
+        if(counter->left!=NULL){
+            counter = counter->left;
+            flipCount++;
+        }
+        else if(counter->right!=NULL){
+            counter = counter->right;
+            flipCount++;
+        }
+        else{
+            return flipCount;
+        }
+    }
 }
 
 Tree::~Tree()

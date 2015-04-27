@@ -13,7 +13,7 @@ void displayMenu(){
     cout<<"4. Reset Tree\n";
     cout<<"5. Count Total Probabilities\n";
     cout<<"6. Show Previous Flip Outcomes\n";
-    cout<<"7. Redo Flip\n";
+    cout<<"7. Undo Flip\n";
     cout<<"8. Show Number Of Flips\n";
     cout<<"9. Force Flip\n";
     cout<<"10. Compare Odds\n";
@@ -25,8 +25,8 @@ void displayMenu(){
 int main()
 {
     string input;
-    Tree *DadTree = new Tree();
-    Node *root = new Node;
+    Tree *DadTree = new Tree();//I don-t know if this is the correct way to inititallize the tree
+    //Node *root = new Node;
 
     displayMenu();
     while(getline(cin,input)){
@@ -35,8 +35,8 @@ int main()
             cout<<"How many tosses do you want to make?\n";
             getline(cin, num);
             int number=atoi(num.c_str());
-            DadTree->buildTree(number, root);
-             //I don-t know if this is the correct way to inititallize the tree
+            DadTree->buildTree(number, DadTree->root);
+             //If we construct tree here I get an error in future functions
             displayMenu();
         }
         if(input == "2"){
@@ -55,9 +55,12 @@ int main()
             displayMenu();
         }
         if(input == "7"){
+            DadTree->undoFlip();
             displayMenu();
         }
         if(input == "8"){
+            int flipCount = DadTree->countFlips(DadTree->root);
+            cout<<"You have flipped "<<flipCount<<" times."<<endl;
             displayMenu();
         }
         if(input == "9"){

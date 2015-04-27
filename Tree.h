@@ -18,9 +18,9 @@ class Tree
 {
     public:
         Tree();
-        void buildTree(int,Node*);
-        void flipcoin(); //finished
-        void forceFlip(bool);
+        void buildTree(int,Node*); //1
+        void flipcoin(); //finished //2
+        void forceFlip(bool); //9
         void allPossibilities(Node *); //finished
         void probability(int head, int tail);
         void initializeAllPoss(Node*); //finished helper function
@@ -29,12 +29,14 @@ class Tree
         void printCounter();
         void compareProbabilities(int);
         void undoFlip();
+        int countFlips(Node*);
         int Probabilities;
         virtual ~Tree();
     protected:
     private:
-        int counter;
+        int counters;
         Node *tracker;
+        Node *counter;
         Node *root;
 
 };
