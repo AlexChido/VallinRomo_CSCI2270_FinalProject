@@ -18,8 +18,9 @@ class Tree
 {
     public:
         Tree(int);
+        Tree();
         void flipcoin(); //finished
-        bool forceflip();
+        void forceFlip(bool);
         void allPossibilities(Node *); //finished
         void probability(int head, int tail);
         void initializeAllPoss(Node*); //finished helper function

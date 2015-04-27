@@ -1,5 +1,8 @@
 #include <iostream>
 #include "Tree.h"
+#include <string>
+#include <stdlib.h>
+
 using namespace std;
 
 void displayMenu(){
@@ -17,17 +20,21 @@ void displayMenu(){
     cout<<"11. Quit\n";
 }
 
+
+
 int main()
 {
     string input;
+    Tree *DadTree = new Tree(); //I don-t know if this is the correct way to inititallize the tree
 
+    displayMenu();
     while(getline(cin,input)){
         if(input == "1"){
             string num;
             cout<<"How many tosses do you want to make?\n";
             getline(cin, num);
             int number=atoi(num.c_str());
-            Tree *DadTree = new Tree(number); //I don-t know if this is the correct way to inititallize the tree
+
             displayMenu();
         }
         if(input == "2"){
@@ -53,16 +60,15 @@ int main()
         }
         if(input == "9"){
             bool isHeads;
-            char input;
             bool choosing = true;
             cout<<"Do you want it to be heads or tails? <H/T> "<<endl;
             while(choosing){
                 cin>>input;
-                if(input == 'h'||input=='H'){
+                if(input == "h"||input=="H"){
                     bool isHeads = true;
                     break;
                 }
-                else if(input == 't'||input=='T'){
+                else if(input == "t"||input=="T"){
                     bool isHeads = false;
                     break;
                 }
@@ -70,7 +76,7 @@ int main()
                     cout<<"Invalid input, choose again. <H/T>"<<endl;
                 }
             }
-            forceFlip(flip);
+            DadTree->forceFlip(isHeads);
             displayMenu();
         }
         if(input == "10"){
