@@ -25,7 +25,7 @@ void displayMenu(){
 int main()
 {
     string input;
-    Tree *DadTree = new Tree();//I don-t know if this is the correct way to inititallize the tree
+    Tree *DadTree;//I don-t know if this is the correct way to inititallize the tree
     //Node *root = new Node;
 
     displayMenu();
@@ -35,7 +35,7 @@ int main()
             cout<<"How many tosses do you want to make?\n";
             getline(cin, num);
             int number=atoi(num.c_str());
-            DadTree->buildTree(number, DadTree->root);
+            DadTree=new Tree(number);
              //If we construct tree here I get an error in future functions
             displayMenu();
         }

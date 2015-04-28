@@ -19,8 +19,8 @@ struct Node{
 class Tree
 {
     public:
-        Tree();
-        void buildTree(int,Node*); //1
+        Tree(int);
+        void buildTree(Node); //1
         void flipcoin(); //finished //2
         void forceFlip(bool); //9
         int allPossibilities(Node *); //finished

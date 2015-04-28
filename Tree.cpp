@@ -5,17 +5,31 @@
 
 using namespace std;
 
-Tree::Tree()
+Tree::Tree(int sizer)
 {
-    //ctor
-
+    Node *root=new Node;
+    root->parent=NULL;
+    root->left=NULL;
+    root->right=NULL;
+    Node *x=root;
+    for(int i=0; i<sizer; i++){
+        buildTree(x->right);
+        buildTree(x->left);
+    }
 }
 
 
-void Tree::buildTree(int sizer, Node *root){
-    root->parent = NULL;
-
-    //this is WEIRD... we should add a node every time they flip
+void Tree::buildTree(Node *x){
+    Node *leftChild=new Node;
+    Node *rightChild=new Node;
+    leftChild->left=NULL;
+    leftChild->right=NULL;
+    rightChild->left=NULL;
+    rightChild->right=NULL;
+    x->left=leftChild;
+    x->right=rightChild;
+    leftChild->parent=x;
+    rightChild->parent=x;
 }
 
 void Tree::flipcoin(){
