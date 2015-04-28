@@ -109,3 +109,24 @@ The probability of obtaining 3 heads, 0 tails... its approximately the same as i
 I don't know why am I even explaining this one, but just in case.
 after pressing "11" and ENTER, you will have a very friendly goodbye message, and the program will end.
 So you will most likely select this option if you are done with your probabilities. 
+
+C) Dependencies:
+This program runs only on built-in C++ libraries, so you will not need to install anything else in order to run it appropriately.
+As long as you have the complete set of libraries that C++ has, then you should be totally fine while running it.
+
+D) System Requirements:
+This program should have no problem running in on Linux, Windows or Mac.
+The only requirement is that you should have some kind of platform that enables you to compile and run C++ files (.cpp).
+
+E) Group Members:
+This is a list of the members of the team:
+
+1.- Lauren McIntire
+2.- Cody Towstik
+3.- Alejandro Vallin Romo
+
+F) Contributors:
+We haven't had any other contributors so far.
+
+G) Open Isues/Bugs:
+We shall see.
