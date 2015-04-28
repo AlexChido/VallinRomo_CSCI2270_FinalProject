@@ -40,6 +40,7 @@ int main()
             displayMenu();
         }
         if(input == "2"){
+            DadTree->flipcoin();
             displayMenu();
         }
         if(input == "3"){

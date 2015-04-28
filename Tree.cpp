@@ -7,29 +7,30 @@ using namespace std;
 
 Tree::Tree(int sizer)
 {
-    Node *root=new Node;
     root->parent=NULL;
     root->left=NULL;
     root->right=NULL;
-    Node *x=root;
+    Node*x=root;
+    Node*y=root;
     for(int i=0; i<sizer; i++){
-        buildTree(x->right);
-        buildTree(x->left);
+        buildTree(x);
+        x=x->left;
+        buildTree(y);
+        y=y->right;
+        }
     }
-}
 
-
-void Tree::buildTree(Node *x){
-    Node *leftChild=new Node;
-    Node *rightChild=new Node;
-    leftChild->left=NULL;
-    leftChild->right=NULL;
-    rightChild->left=NULL;
-    rightChild->right=NULL;
-    x->left=leftChild;
-    x->right=rightChild;
-    leftChild->parent=x;
-    rightChild->parent=x;
+void Tree::buildTree(Node *y){
+    Node * newHead = new Node(true);
+        Node * newTail = new Node (false);
+        newHead->left=NULL;
+        newHead->right=NULL;
+        newTail->left=NULL;
+        newTail->right=NULL;
+        newHead->parent = y;
+        newTail->parent=y;
+        y->left = newHead;
+        y->right = newTail;
 }
 
 void Tree::flipcoin(){

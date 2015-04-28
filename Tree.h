@@ -20,7 +20,7 @@ class Tree
 {
     public:
         Tree(int);
-        void buildTree(Node); //1
+        void buildTree(Node*); //1
         void flipcoin(); //finished //2
         void forceFlip(bool); //9
         int allPossibilities(Node *); //finished
@@ -33,7 +33,7 @@ class Tree
         void undoFlip();
         int countFlips(Node*);
         int Probabilities;
-        Node *root;
+        Node *root=new Node(true);
         virtual ~Tree();
     protected:
     private:
