@@ -43,6 +43,7 @@ void Tree::buildTree(Node *x, int current){
 
 void Tree::reset(){
     tracker=root;
+    flipCounter = 0;
 }
 //this is mainly for debugging the build tree, but we can use it as another function if we want
 void Tree::printTree(Node* node, int indent=0){
@@ -65,24 +66,24 @@ void Tree::printTree(Node* node, int indent=0){
 void Tree::flipcoin(){
 //0 is Tails and 1 is Heads
 //random number generator indicates heads or tails
-int flip=rand() % 2;
-if (flip==1){ //heads
-    if(tracker->right!=NULL){
-        cout<<"Heads"<<endl;
-        tracker=tracker->left;
+    int flip=rand() % 2;
+    if (flip==1){ //heads
+        if(tracker->right!=NULL){
+            cout<<"Heads"<<endl;
+            tracker=tracker->left;
+        }
+        else //at the leaf
+            cout<<"No more available flips"<<endl;
     }
-    else //at the leaf
-        cout<<"No more available flips"<<endl;
-}
-else{ //tails
-    if(tracker->left!=NULL){
-        cout<<"Tails"<<endl;
-        tracker=tracker->right;
+    else{ //tails
+        if(tracker->left!=NULL){
+            cout<<"Tails"<<endl;
+            tracker=tracker->right;
+        }
+        else //at the leaf
+            cout<<"No more available flips"<<endl;
     }
-    else //at the leaf
-        cout<<"No more available flips"<<endl;
-}
-
+    flipCounter++;
 }
 
 void Tree::initializeAllPoss(){
@@ -131,31 +132,12 @@ void Tree::undoFlip(){
     else{
         cout<<"You haven't flipped a coin yet."<<endl;
     }
+    flipCounter--;
 }
 
-int Tree::countFlips(Node * root){
-    counter = root;
-    int flipCount = 0;
-    if(counter->head != NULL){
-        flipCount++;
-    }
-    else{
-        return flipCount;
-    }
+void Tree::countFlips(){
+    cout<<"You have flipped "<<flipCounter<<" times."<<endl;
 
-    while(counter->left != NULL ||counter->right != NULL){
-        if(counter->left!=NULL){
-            counter = counter->left;
-            flipCount++;
-        }
-        else if(counter->right!=NULL){
-            counter = counter->right;
-            flipCount++;
-        }
-        else{
-            return flipCount;
-        }
-    }
 }
 
 Tree::~Tree()
@@ -175,7 +157,7 @@ void Tree::forceFlip(bool isHeads){
         else //at the leaf
             cout<<"No more available flips"<<endl;
     }
-
+    flipCounter++;
 }
 
 void Tree::probability(int head, int tail){

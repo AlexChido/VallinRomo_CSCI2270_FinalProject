@@ -26,16 +26,19 @@ class Tree
         void printCounter();
         void compareProbabilities(long);
         void undoFlip();
-        int countFlips(Node*);
+        void countFlips();
         int Probabilities;
         Node *root=new Node;
         Node *tracker;
         void DeleteAll(Node*);
         void printTree(Node*, int);
         virtual ~Tree();
+        int flipCounter = 0;
     protected:
     private:
+        //oid addCount();
         int counters;
+
         vector <int> Paschal(int);
         int height();
         int sizer;

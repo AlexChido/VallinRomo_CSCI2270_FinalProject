@@ -63,8 +63,7 @@ int main()
             displayMenu();
         }
         if(input == "8"){
-            int flipCount = DadTree->countFlips(DadTree->root);
-            cout<<"You have flipped "<<flipCount<<" times."<<endl;
+            DadTree->countFlips();
             displayMenu();
         }
         if(input == "9"){
