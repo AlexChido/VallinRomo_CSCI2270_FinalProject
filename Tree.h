@@ -9,18 +9,13 @@ struct Node{
     Node *right;
     Node *left;
     Node *parent;
-    Node() {};
-
-    Node(bool face){
-    face=head;
-    }
 };
 
 class Tree
 {
     public:
         Tree(int);
-        void buildTree(Node*); //1
+        void buildTree(Node*, int); //1
         void flipcoin(); //finished //2
         void forceFlip(bool); //9
         int allPossibilities(Node *); //finished
@@ -33,7 +28,9 @@ class Tree
         void undoFlip();
         int countFlips(Node*);
         int Probabilities;
-        Node *root=new Node(true);
+        Node *root=new Node;
+        void DeleteAll(Node*);
+        void printTree(Node*);
         virtual ~Tree();
     protected:
     private:

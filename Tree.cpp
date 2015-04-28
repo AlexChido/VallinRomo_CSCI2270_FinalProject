@@ -2,51 +2,70 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
 Tree::Tree(int sizer)
 {
     root->parent=NULL;
-    root->left=NULL;
-    root->right=NULL;
-    Node*x=root;
-    Node*y=root;
-    for(int i=0; i<sizer; i++){
-        buildTree(x);
-        x=x->left;
-        buildTree(y);
-        y=y->right;
-        }
-    }
+    counters=0;
+    tracker=root;
+    Tree::buildTree(root, sizer);
+}
 
-void Tree::buildTree(Node *y){
-    Node * newHead = new Node(true);
-        Node * newTail = new Node (false);
+void Tree::buildTree(Node *x, int sizer){
+    if(counters<=sizer){
+        Node *newHead=new Node;
+        newHead->head=true;
+        Node *newTail=new Node;
+        newTail->head=false;
+        x->left=newHead;
+        x->right=newTail;
+        newHead->parent=x;
         newHead->left=NULL;
         newHead->right=NULL;
+        newTail->parent=x;
         newTail->left=NULL;
         newTail->right=NULL;
-        newHead->parent = y;
-        newTail->parent=y;
-        y->left = newHead;
-        y->right = newTail;
+        counters++;
+        buildTree(newHead, sizer);
+        buildTree(newTail, sizer);
+    }
+    else{
+        Tree::printTree(root);
+        return;
+    }
+}
+
+void Tree::printTree(Node* node){
+    if(node->left!=NULL)
+        printTree(node->left);
+    cout<<node->head<<endl;
+    if(node->right!=NULL)
+        printTree(node->right);
 }
 
 void Tree::flipcoin(){
 //0 is Tails and 1 is Heads
 //random number generator indicates heads or tails
-int flip=rand() % 1+0;
-if (flip==1) //heads
-    if(tracker->left!=NULL)
+int flip=rand() % 2;
+if (flip==1){ //heads
+    if(tracker->left!=NULL){
+        cout<<"Heads"<<endl;
         tracker=tracker->left;
+    }
     else //at the leaf
         cout<<"No more available flips"<<endl;
-else //tails
-    if(tracker->right!=NULL)
+}
+else{ //tails
+    if(tracker->right!=NULL){
+        cout<<"Tails"<<endl;
         tracker=tracker->right;
+    }
     else //at the leaf
         cout<<"No more available flips"<<endl;
+}
 
 }
 
@@ -119,7 +138,6 @@ int Tree::countFlips(Node * root){
 
 Tree::~Tree()
 {
-    //dtor
 }
 
 void Tree::forceFlip(bool isHeads){
@@ -195,4 +213,12 @@ vector <int> Tree::Paschal(int height){
         }
     }
     return P;
+}
+
+void Tree::DeleteAll(Node *node){
+    if(node->left!=NULL)
+        DeleteAll(node->left);
+    if(node->right!=NULL)
+        DeleteAll(node->right);
+    delete node;
 }

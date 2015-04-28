@@ -89,6 +89,7 @@ int main()
             displayMenu();
         }
         if(input == "11"){
+            //DadTree->DeleteAll(root);
             break;
         }
     }
