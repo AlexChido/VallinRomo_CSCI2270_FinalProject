@@ -7,17 +7,17 @@ B) How To Run:
 This program is very straight forward and easy to use. When you start the program, you will see a menu similar to this one:
 
 ======Main Menu======
-1. Build Probability Tree
-2. Flip Coin
-3. Calculate Probabilities
-4. Reset Tree
-5. Count Total Probabilities
-6. Show Previous Flip Outcomes
-7. Redo Flip
-8. Show Number Of Flips
-9. Force Flip
-10. Compares Odd
-11. Quit
+ 1. Build Probability Tree
+ 2. Flip Coin
+ 3. Calculate Probabilities
+ 4. Reset Tree
+ 5. Count Total Probabilities
+ 6. Show Previous Flip Outcomes
+ 7. Redo Flip
+ 8. Show Number Of Flips
+ 9. Force Flip
+ 10. Compares Odd
+ 11. Quit
 
 To select an item, you must type the NUMBER AT THE LEFT OF THE ITEM, and then press ENTER or RETURN.
 
