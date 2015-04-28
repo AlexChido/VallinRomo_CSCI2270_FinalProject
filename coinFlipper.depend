@@ -1,16 +1,21 @@
 # depslib dependency file v1.0
-1430125354 source:c:\users\cody\documents\github\vallinromo_csci2270_finalproject\main.cpp
+1430261075 source:c:\users\cody\documents\github\vallinromo_csci2270_finalproject\main.cpp
 	<iostream>
 	"Tree.h"
 	<string>
 	<stdlib.h>
 
-1430125434 c:\users\cody\documents\github\vallinromo_csci2270_finalproject\tree.h
+1430261089 c:\users\cody\documents\github\vallinromo_csci2270_finalproject\tree.h
+	<vector>
 
-1430123705 source:c:\users\cody\documents\github\vallinromo_csci2270_finalproject\tree.cpp
+1430261075 source:c:\users\cody\documents\github\vallinromo_csci2270_finalproject\tree.cpp
 	"Tree.h"
 	<iostream>
 	<cstdlib>
+	<vector>
+	<math.h>
+	<iomanip>
+	<queue>
 
 1430257095 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/main.cpp
 	<iostream>

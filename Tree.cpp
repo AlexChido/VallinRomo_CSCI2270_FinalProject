@@ -246,3 +246,72 @@ void Tree::DeleteAll(Node *node){
         DeleteAll(node->right);
     delete node;
 }
+
+
+void Tree::compareProbabilities(long chance){
+    long chances[10];
+    long bowling300 = 1/11500;
+    chances[0] = bowling300;
+    long holeInOne = 1/5000;
+    chances[1] = holeInOne;
+    long beingAstronaut = 1/13200000;
+    chances[2] = beingAstronaut;
+    long murder = 1/2;
+    chances[3] = murder;
+    long celebrityM = 1/3;
+    chances[4] = celebrityM;
+    long hemmorrhoids = 1/25;
+    chances[5] = hemmorrhoids;
+    long marriage = 1/1.3;
+    chances[6] = marriage;
+    long victim = 1/20;
+    chances[7] = victim;
+    long presHarvard = 1/3.58;
+    chances[8] = presHarvard;
+    long beingAsian = 2/3;
+    chances[9] = beingAsian;
+
+    long closestChance = 100;
+    int chanceNum;
+    string chanceMsg = "That is approximately the same chance of ";
+    for(int i = 0; i<9;i++){
+        int tempChance = abs(chance-chances[i]);
+        if(tempChance<closestChance){
+            closestChance = tempChance;
+            chanceNum = i;
+        }
+    }
+    switch(chanceNum){
+    case 0:
+        cout<<chanceMsg<<"bowling a perfect 300 game."<<endl;
+        break;
+    case 1:
+        cout<<chanceMsg<<"getting a hole in one."<<endl;
+        break;
+    case 2:
+        cout<<chanceMsg<<"being an astronaut."<<endl;
+        break;
+    case 3:
+        cout<<chanceMsg<<"getting away with murder."<<endl;
+        break;
+    case 4:
+        cout<<chanceMsg<<"a celebrity marriage lasting forever."<<endl;
+        break;
+    case 5:
+        cout<<chanceMsg<<"getting a hemorrhoid."<<endl;
+    case 6:
+        cout<<chanceMsg<<"a marriage lasting at least 15 years."<<endl;
+        break;
+    case 7:
+        cout<<chanceMsg<<"being a victim of a serious crime."<<endl;
+        break;
+    case 8:
+        cout<<chanceMsg<<"a president having gone to Harvard."<<endl;
+        break;
+    case 9:
+        cout<<chanceMsg<<"being born Asian."<<endl;
+        break;
+
+    }
+
+}
