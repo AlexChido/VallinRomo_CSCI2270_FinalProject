@@ -18,9 +18,9 @@ class Tree
         void buildTree(Node*, int); //1
         void flipcoin(); //finished //2
         void forceFlip(bool); //9
-        int allPossibilities(Node *); //finished
+        int allPossibilities(Node*); //finished
         void probability(int head, int tail);
-        void initializeAllPoss(Node*); //finished helper function
+        void initializeAllPoss(); //finished helper function
         void printPastFlips(); //finished
         void reset(); //finished
         void printCounter();
@@ -29,6 +29,7 @@ class Tree
         int countFlips(Node*);
         int Probabilities;
         Node *root=new Node;
+        Node *tracker;
         void DeleteAll(Node*);
         void printTree(Node*, int);
         virtual ~Tree();
@@ -37,7 +38,7 @@ class Tree
         int counters;
         vector <int> Paschal(int);
         int height();
-        Node *tracker;
+        int sizer;
         Node *counter;
 
 };

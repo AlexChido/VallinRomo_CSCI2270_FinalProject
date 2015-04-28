@@ -26,7 +26,7 @@ int main()
 {
     string input;
     Tree *DadTree;//I don-t know if this is the correct way to inititallize the tree
-    //Node *root = new Node;
+    Node *root = new Node;
 
     displayMenu();
     while(getline(cin,input)){
@@ -47,12 +47,15 @@ int main()
             displayMenu();
         }
         if(input == "4"){
+            DadTree->reset();
             displayMenu();
         }
         if(input == "5"){
+            DadTree->initializeAllPoss();
             displayMenu();
         }
         if(input == "6"){
+            DadTree->printPastFlips();
             displayMenu();
         }
         if(input == "7"){
@@ -72,17 +75,18 @@ int main()
                 cin>>input;
                 if(input == "h"||input=="H"){
                     bool isHeads = true;
+                    DadTree->forceFlip(isHeads);
                     break;
                 }
                 else if(input == "t"||input=="T"){
                     bool isHeads = false;
+                    DadTree->forceFlip(isHeads);
                     break;
                 }
                 else{
                     cout<<"Invalid input, choose again. <H/T>"<<endl;
                 }
             }
-            DadTree->forceFlip(isHeads);
             displayMenu();
         }
         if(input == "10"){

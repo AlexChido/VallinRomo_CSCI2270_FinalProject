@@ -4,19 +4,21 @@
 #include <vector>
 #include <math.h>
 #include <iomanip>
+#include <queue>
 
 using namespace std;
 
-Tree::Tree(int sizer)
+Tree::Tree(int sze)
 {
     root->parent=NULL;
+    sizer=sze;
     counters=0;
     tracker=root;
-    Tree::buildTree(root, sizer);
+    Tree::buildTree(root, 0);
 }
 
-void Tree::buildTree(Node *x, int sizer){
-    if(counters<=sizer){
+void Tree::buildTree(Node *x, int current){
+    if(current<sizer){
         Node *newHead=new Node;
         newHead->head=true;
         Node *newTail=new Node;
@@ -29,16 +31,20 @@ void Tree::buildTree(Node *x, int sizer){
         newTail->parent=x;
         newTail->left=NULL;
         newTail->right=NULL;
-        counters++;
-        buildTree(newHead, sizer);
-        buildTree(newTail, sizer);
+        current++;
+        buildTree(newHead, current);
+        buildTree(newTail, current);
     }
     else{
-        Tree::printTree(root, 0);
+        //Tree::printTree(root, 0);
         return;
     }
 }
 
+void Tree::reset(){
+    tracker=root;
+}
+//this is mainly for debugging the build tree, but we can use it as another function if we want
 void Tree::printTree(Node* node, int indent=0){
     if(node != NULL) {
         if(node->right) {
@@ -61,7 +67,7 @@ void Tree::flipcoin(){
 //random number generator indicates heads or tails
 int flip=rand() % 2;
 if (flip==1){ //heads
-    if(tracker->left!=NULL){
+    if(tracker->right!=NULL){
         cout<<"Heads"<<endl;
         tracker=tracker->left;
     }
@@ -69,7 +75,7 @@ if (flip==1){ //heads
         cout<<"No more available flips"<<endl;
 }
 else{ //tails
-    if(tracker->right!=NULL){
+    if(tracker->left!=NULL){
         cout<<"Tails"<<endl;
         tracker=tracker->right;
     }
@@ -79,35 +85,41 @@ else{ //tails
 
 }
 
-void Tree::initializeAllPoss(Node *tracker){
+void Tree::initializeAllPoss(){
 //helper function for allPossibilities
 //new pointer so we don't lose track of the tracker pointer position
 Node *x=tracker;
-counter=0;
-allPossibilities(x);
+counters=0;
+int counters=allPossibilities(x);
+if(counters==1)
+    counters=0;
+cout<<counters<<" total possible outcomes"<<endl;
 }
 
 
 int Tree::allPossibilities(Node *x){
 //count the leaves of the subtree recursively
-while(x->right!=NULL)
+if(x->right!=NULL)
     allPossibilities(x->right);
-while(x->left!=NULL)
+if(x->left!=NULL)
     allPossibilities(x->left);
 //count all leaves
-if(x->left==NULL&&x->right==NULL)
-    counter++;
+else if(x->left==NULL&&x->right==NULL)
+    counters++;
+return counters;
 }
 
 void Tree::printPastFlips(){
     Node *x=tracker;
+    queue <string> Outcomes;
     while(x!=root){
         if(x->head==true)
-            cout<<"Heads ";
+            cout<<"Head ";
         else
-            cout<<"Tails ";
+            cout<<"Tail ";
         x=x->parent;
     }
+    cout<<endl;
 }
 
 void Tree::undoFlip(){
@@ -151,16 +163,18 @@ Tree::~Tree()
 }
 
 void Tree::forceFlip(bool isHeads){
-    if (isHeads) //heads
+    if (isHeads){ //heads
         if(tracker->left!=NULL)
             tracker=tracker->left;
         else //at the leaf
             cout<<"No more available flips"<<endl;
-    else //tails
+    }
+    else{ //tails
         if(tracker->right!=NULL)
             tracker=tracker->right;
         else //at the leaf
             cout<<"No more available flips"<<endl;
+    }
 
 }
 

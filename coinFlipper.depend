@@ -12,19 +12,21 @@
 	<iostream>
 	<cstdlib>
 
-1430245052 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/main.cpp
+1430256545 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/main.cpp
 	<iostream>
 	"Tree.h"
 	<string>
 	<stdlib.h>
 
-1430247290 /home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/Tree.h
+1430256564 /home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/Tree.h
 	<vector>
 
-1430246813 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/Tree.cpp
+1430255969 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/Tree.cpp
 	"Tree.h"
 	<iostream>
 	<cstdlib>
 	<vector>
 	<math.h>
+	<iomanip>
+	<queue>
 
