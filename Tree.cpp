@@ -5,6 +5,7 @@
 #include <math.h>
 #include <iomanip>
 #include <queue>
+#include <stdio.h>
 
 using namespace std;
 
@@ -90,10 +91,9 @@ void Tree::initializeAllPoss(){
 //new pointer so we don't lose track of the tracker pointer position
 Node *x=tracker;
 counters=0;
-int counters=allPossibilities(x);
+Probabilities=allPossibilities(x);
 if(counters==1)
     counters=0;
-cout<<counters<<" total possible outcomes"<<endl;
 }
 
 
@@ -184,6 +184,11 @@ void Tree::probability(int head, int tail){
     int futureHeads=0;
     int futureTails=0;
     Node *x=tracker;
+    int h=Tree::height();
+    if((head+tail)!=h){
+        cout<<"0% probability"<<endl;
+        return;
+        }
     while (x!=root){
         if (x->head==true)
             existingHeads++;
@@ -191,29 +196,19 @@ void Tree::probability(int head, int tail){
             existingTails++;
         x=x->parent;
     }
-    if(existingHeads==head&&existingTails==tail){
-        cout<<"100% probability of "<<head<<"heads and "<<tail<<"tails"<<endl;
-        return;
-    }
-    else{
        head-=existingHeads;
        tail-=existingTails;
-       int possibilities= Tree::allPossibilities(tracker);
-        int height=Tree::height();
-        if(head+tail>height||head+tail<height){
-            cout<<"0% probability"<<endl;
-            return;
-        }
-        else{
-            vector <int> P=Tree::Paschal(height);
-            int paths=P[P.size()-head];
-            cout<<(paths/possibilities)<<"% chance"<<endl;
-        }
-    }
+       Tree::initializeAllPoss();
+       cout<<"Prob "<<Probabilities<<endl;
+       vector <int> P=Tree::Paschal(h);
+       double paths=P[P.size()-head+existingHeads];
+       cout<<"path "<<paths<<endl;
+       double prob=(paths/Probabilities);
+       cout<<(prob*100)<<" % chance"<<endl;
 }
 
 int Tree::height(){
-    counters=0;
+    counters=1;
     if(tracker->right!=NULL)
         counter=tracker->right;
     else

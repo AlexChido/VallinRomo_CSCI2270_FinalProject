@@ -44,6 +44,15 @@ int main()
             displayMenu();
         }
         if(input == "3"){
+            string h;
+            string t;
+            cout<<"Enter the number of heads you wish to flip: "<<endl;
+            cin>>h;
+            int head=atoi(h.c_str());
+            cout<<"Enter the number of tails you wish to flip: "<<endl;
+            cin>>t;
+            int tail=atoi(t.c_str());
+            DadTree->probability (head, tail);
             displayMenu();
         }
         if(input == "4"){
@@ -52,6 +61,7 @@ int main()
         }
         if(input == "5"){
             DadTree->initializeAllPoss();
+            cout<<DadTree->Probabilities<<" total possible outcomes"<<endl;
             displayMenu();
         }
         if(input == "6"){
