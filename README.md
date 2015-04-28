@@ -59,3 +59,53 @@ For example, if you initialized the tree to toss the coin 2 times, you will have
 0.5 chance of getting 1 heads, 1 tails
 0.25 chance of getting 2 tails, 0 tails
 
+6.- Show Previous Flip Outcomes:
+This item will show you on just one line, the outcomes of the previous coin flips you made, including the force flip ones.
+You will most likely select this option if you forgot exactly the outcomes you got previously, and you need to know a certain probability for example.
+You will not be prompted with anything, so after pressing "6" and ENTER, you will see on the screen the outcomes in order.
+For example:
+
+you got: - heads - tails - tails - heads - tails -
+
+This will show in case you did 5 coin flips, and your first flip ended up in heads, then 2 tails, then heads again and the last you made tails.
+
+7.- Redo Flip:
+This is a useful option if you want to compare 2 very close possibilities. 
+In the most simple terms, it restart the coin flip that you previously made, even if it was a force flip.
+You don't need to select it immediately after the previous flip in order for it to work. The program will remember what was the last flip you made. So whatever you do in the middle of your last flip and selecting this item, it won't affect deleting the previous flip.
+In other words, it's a safe option at any moment.
+Only that, of course, if you haven't done any flips, it will show a message saying:
+
+You haven't done any flips yet!
+
+8.- Show Number Of Flips:
+A very simple function that shows you how many flips have you made, including force flips. if you selected coin flip two times, and force flipped once, then it will show you:
+
+You have flipped 3 times.
+
+9.- Force Flip:
+Finally we explain what a force flip is!
+you can select if the next coin flip you do, is going to come out as tails or heads. And flips the coin as you previously specified. 
+You will most likely use this option when you want to test certain specific probabilities, that will be hard to come by just randomly.
+After you press "9" and ENTER, you will be prompted with the following:
+
+You selected Force Flip, do you want Heads or Tails? (h/t)
+h
+
+The letter "h" is an example of how you as the user, are going to respond to the prompt. 
+In case you want your next toss to be heads, you will type "h" and press ENTER. 
+In case you want your next toss to be tails, you will type "t" and press ENTER.
+
+After you do this, the program tosses the coin to end up exactly as you said on the previous prompt.
+
+10.- Compares Odd:
+This is a fun one.
+Based on the coin tosses that you already made, it gives you a fun fact about the probability you just got.
+For example, if you got 3 heads in a row, you will have a message saying:
+
+The probability of obtaining 3 heads, 0 tails... its approximately the same as if you where Mexican and you have 2 kids, and one of them is assigned to military service. 
+
+11.- Quit:
+I don't know why am I even explaining this one, but just in case.
+after pressing "11" and ENTER, you will have a very friendly goodbye message, and the program will end.
+So you will most likely select this option if you are done with your probabilities. 
