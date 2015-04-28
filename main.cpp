@@ -73,8 +73,7 @@ int main()
             displayMenu();
         }
         if(input == "8"){
-            int flipCount = DadTree->countFlips(DadTree->root);
-            cout<<"You have flipped "<<flipCount<<" times."<<endl;
+            DadTree->countFlips();
             displayMenu();
         }
         if(input == "9"){
@@ -100,6 +99,11 @@ int main()
             displayMenu();
         }
         if(input == "10"){
+            cout<<"What is the probability you want to compare?"<<endl;
+            string cInput;
+            cin>>cInput;
+            int number=atol(input.c_str());
+            DadTree->compareProbabilities(number);
             displayMenu();
         }
         if(input == "11"){

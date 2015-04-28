@@ -44,6 +44,7 @@ void Tree::buildTree(Node *x, int current){
 
 void Tree::reset(){
     tracker=root;
+    flipCounter = 0;
 }
 //this is mainly for debugging the build tree, but we can use it as another function if we want
 void Tree::printTree(Node* node, int indent=0){
@@ -66,24 +67,24 @@ void Tree::printTree(Node* node, int indent=0){
 void Tree::flipcoin(){
 //0 is Tails and 1 is Heads
 //random number generator indicates heads or tails
-int flip=rand() % 2;
-if (flip==1){ //heads
-    if(tracker->right!=NULL){
-        cout<<"Heads"<<endl;
-        tracker=tracker->left;
+    int flip=rand() % 2;
+    if (flip==1){ //heads
+        if(tracker->right!=NULL){
+            cout<<"Heads"<<endl;
+            tracker=tracker->left;
+        }
+        else //at the leaf
+            cout<<"No more available flips"<<endl;
     }
-    else //at the leaf
-        cout<<"No more available flips"<<endl;
-}
-else{ //tails
-    if(tracker->left!=NULL){
-        cout<<"Tails"<<endl;
-        tracker=tracker->right;
+    else{ //tails
+        if(tracker->left!=NULL){
+            cout<<"Tails"<<endl;
+            tracker=tracker->right;
+        }
+        else //at the leaf
+            cout<<"No more available flips"<<endl;
     }
-    else //at the leaf
-        cout<<"No more available flips"<<endl;
-}
-
+    flipCounter++;
 }
 
 void Tree::initializeAllPoss(){
@@ -131,31 +132,12 @@ void Tree::undoFlip(){
     else{
         cout<<"You haven't flipped a coin yet."<<endl;
     }
+    flipCounter--;
 }
 
-int Tree::countFlips(Node * root){
-    counter = root;
-    int flipCount = 0;
-    if(counter->head != NULL){
-        flipCount++;
-    }
-    else{
-        return flipCount;
-    }
+void Tree::countFlips(){
+    cout<<"You have flipped "<<flipCounter<<" times."<<endl;
 
-    while(counter->left != NULL ||counter->right != NULL){
-        if(counter->left!=NULL){
-            counter = counter->left;
-            flipCount++;
-        }
-        else if(counter->right!=NULL){
-            counter = counter->right;
-            flipCount++;
-        }
-        else{
-            return flipCount;
-        }
-    }
 }
 
 Tree::~Tree()
@@ -175,7 +157,7 @@ void Tree::forceFlip(bool isHeads){
         else //at the leaf
             cout<<"No more available flips"<<endl;
     }
-
+    flipCounter++;
 }
 
 void Tree::probability(int head, int tail){
@@ -240,4 +222,73 @@ void Tree::DeleteAll(Node *node){
     if(node->right!=NULL)
         DeleteAll(node->right);
     delete node;
+}
+
+
+void Tree::compareProbabilities(long chance){
+    long chances[10];
+    long bowling300 = 1/11500;
+    chances[0] = bowling300;
+    long holeInOne = 1/5000;
+    chances[1] = holeInOne;
+    long beingAstronaut = 1/13200000;
+    chances[2] = beingAstronaut;
+    long murder = 1/2;
+    chances[3] = murder;
+    long celebrityM = 1/3;
+    chances[4] = celebrityM;
+    long hemmorrhoids = 1/25;
+    chances[5] = hemmorrhoids;
+    long marriage = 1/1.3;
+    chances[6] = marriage;
+    long victim = 1/20;
+    chances[7] = victim;
+    long presHarvard = 1/3.58;
+    chances[8] = presHarvard;
+    long beingAsian = 2/3;
+    chances[9] = beingAsian;
+
+    long closestChance = 100;
+    int chanceNum;
+    string chanceMsg = "That is approximately the same chance of ";
+    for(int i = 0; i<9;i++){
+        int tempChance = abs(chance-chances[i]);
+        if(tempChance<closestChance){
+            closestChance = tempChance;
+            chanceNum = i;
+        }
+    }
+    switch(chanceNum){
+    case 0:
+        cout<<chanceMsg<<"bowling a perfect 300 game."<<endl;
+        break;
+    case 1:
+        cout<<chanceMsg<<"getting a hole in one."<<endl;
+        break;
+    case 2:
+        cout<<chanceMsg<<"being an astronaut."<<endl;
+        break;
+    case 3:
+        cout<<chanceMsg<<"getting away with murder."<<endl;
+        break;
+    case 4:
+        cout<<chanceMsg<<"a celebrity marriage lasting forever."<<endl;
+        break;
+    case 5:
+        cout<<chanceMsg<<"getting a hemorrhoid."<<endl;
+    case 6:
+        cout<<chanceMsg<<"a marriage lasting at least 15 years."<<endl;
+        break;
+    case 7:
+        cout<<chanceMsg<<"being a victim of a serious crime."<<endl;
+        break;
+    case 8:
+        cout<<chanceMsg<<"a president having gone to Harvard."<<endl;
+        break;
+    case 9:
+        cout<<chanceMsg<<"being born Asian."<<endl;
+        break;
+
+    }
+
 }
