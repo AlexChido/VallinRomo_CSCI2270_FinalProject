@@ -11,7 +11,7 @@ void displayMenu(){
     cout<<"2. Flip Coin\n";
     cout<<"3. Calculate Probabilities\n";
     cout<<"4. Reset Tree\n";
-    cout<<"5. Count Total Probabilities\n";
+    cout<<"5. Count Total Possible Outcomes\n";
     cout<<"6. Show Previous Flip Outcomes\n";
     cout<<"7. Undo Flip\n";
     cout<<"8. Show Number Of Flips\n";

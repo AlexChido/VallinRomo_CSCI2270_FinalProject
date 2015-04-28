@@ -125,7 +125,7 @@ void Tree::printPastFlips(){
 void Tree::undoFlip(){
     if(tracker->parent != NULL){
         tracker=tracker->parent;
-        tracker->head = NULL;
+        //tracker->head = NULL;
         cout<<"Flip has been undone!"<<endl;
     }
     else{
