@@ -30,7 +30,7 @@ class Tree
         int Probabilities;
         Node *root=new Node;
         void DeleteAll(Node*);
-        void printTree(Node*);
+        void printTree(Node*, int);
         virtual ~Tree();
     protected:
     private:

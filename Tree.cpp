@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include <math.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -33,17 +34,26 @@ void Tree::buildTree(Node *x, int sizer){
         buildTree(newTail, sizer);
     }
     else{
-        Tree::printTree(root);
+        Tree::printTree(root, 0);
         return;
     }
 }
 
-void Tree::printTree(Node* node){
-    if(node->left!=NULL)
-        printTree(node->left);
-    cout<<node->head<<endl;
-    if(node->right!=NULL)
-        printTree(node->right);
+void Tree::printTree(Node* node, int indent=0){
+    if(node != NULL) {
+        if(node->right) {
+            printTree(node->right, indent+4);
+        }
+        if (indent) {
+            std::cout << std::setw(indent) << ' ';
+        }
+        if (node->right) std::cout<<" /\n" << std::setw(indent) << ' ';
+        std::cout<< node->head << "\n ";
+        if(node->left) {
+            std::cout << std::setw(indent) << ' ' <<" \\\n";
+            printTree(node->left, indent+4);
+        }
+    }
 }
 
 void Tree::flipcoin(){
