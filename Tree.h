@@ -1,6 +1,8 @@
 #ifndef TREE_H
 #define TREE_H
+#include <vector>
 
+using namespace std;
 
 struct Node{
     bool head;
@@ -21,7 +23,7 @@ class Tree
         void buildTree(int,Node*); //1
         void flipcoin(); //finished //2
         void forceFlip(bool); //9
-        void allPossibilities(Node *); //finished
+        int allPossibilities(Node *); //finished
         void probability(int head, int tail);
         void initializeAllPoss(Node*); //finished helper function
         void printPastFlips(); //finished
@@ -31,13 +33,15 @@ class Tree
         void undoFlip();
         int countFlips(Node*);
         int Probabilities;
+        Node *root;
         virtual ~Tree();
     protected:
     private:
         int counters;
+        vector <int> Paschal(int);
+        int height();
         Node *tracker;
         Node *counter;
-        Node *root;
 
 };
 //Sync test

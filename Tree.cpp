@@ -1,6 +1,7 @@
 #include "Tree.h"
 #include <iostream>
 #include <cstdlib>
+#include <vector>
 
 using namespace std;
 
@@ -38,12 +39,12 @@ void Tree::initializeAllPoss(Node *tracker){
 //helper function for allPossibilities
 //new pointer so we don't lose track of the tracker pointer position
 Node *x=tracker;
-allPossibilities(x);
 counter=0;
+allPossibilities(x);
 }
 
 
-void Tree::allPossibilities(Node *x){
+int Tree::allPossibilities(Node *x){
 //count the leaves of the subtree recursively
 while(x->right!=NULL)
     allPossibilities(x->right);
@@ -118,4 +119,65 @@ void Tree::forceFlip(bool isHeads){
         else //at the leaf
             cout<<"No more available flips"<<endl;
 
+}
+
+void Tree::probability(int head, int tail){
+    int existingHeads=0;
+    int existingTails=0;
+    int futureHeads=0;
+    int futureTails=0;
+    Node *x=tracker;
+    while (x!=root){
+        if (x->head==true)
+            existingHeads++;
+        else
+            existingTails++;
+        x=x->parent;
+    }
+    if(existingHeads==head&&existingTails==tail){
+        cout<<"100% probability of "<<head<<"heads and "<<tail<<"tails"<<endl;
+        return;
+    }
+    else{
+       head-=existingHeads;
+       tail-=existingTails;
+       int possibilities= Tree::allPossibilities(tracker);
+        int height=Tree::height();
+        if(head+tail>height||head+tail<height){
+            cout<<"0% probability"<<endl;
+            return;
+        }
+        else{
+            vector <int> P=Tree::Paschal(height);
+            int paths=P[P.size()-head];
+            cout<<(paths/possibilities)<<"% chance"<<endl;
+        }
+    }
+}
+
+int Tree::height(){
+    counters=0;
+    if(tracker->right!=NULL)
+        counter=tracker->right;
+    else
+        return 0;
+    while(counter->right!=NULL){
+        counters++;
+        counter=counter->right;
+    }
+return counters;
+}
+
+vector <int> Tree::Paschal(int height){
+    vector <int> P;
+    for (int i = 0; i < height; i++)
+    {
+        int val = 1;
+        for (int k = 0; k <= i; k++)
+        {
+            P.push_back(val);
+            val = val * (i - k) / (k + 1);
+        }
+    }
+    return P;
 }
