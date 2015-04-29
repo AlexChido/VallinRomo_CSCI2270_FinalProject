@@ -30,6 +30,7 @@ int main()
 
     displayMenu();
     while(getline(cin,input)){
+        cout<<endl;
         if(input == "1"){
             string num;
             cout<<"How many tosses do you want to make?\n";

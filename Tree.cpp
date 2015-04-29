@@ -201,6 +201,7 @@ void Tree::probability(int head, int tail){
     int existingTails=0;
     int futureHeads=0;
     int futureTails=0;
+
     Node *x=tracker;
     int h=Tree::height();
     cout<<"Height: "<<h<<endl;
@@ -208,6 +209,7 @@ void Tree::probability(int head, int tail){
         cout<<"0% probability"<<endl;
         return;
         }
+        /*
     while (x!=root){
         if (x->head==true)
             existingHeads++;
@@ -215,12 +217,13 @@ void Tree::probability(int head, int tail){
             existingTails++;
         x=x->parent;
     }
+    */
        head-=existingHeads;
        tail-=existingTails;
        Tree::initializeAllPoss();
        cout<<"Prob: "<<Probabilities<<endl;
        vector <int> P=Tree::Paschal(h);
-       double paths=P[P.size()-head+existingHeads];
+       double paths=P[P.size()-head]; //took out +existingHeads
        cout<<"Path: "<<paths<<endl;
        double prob=(paths/Probabilities);
        cout<<(prob*100)<<" % chance"<<endl;
