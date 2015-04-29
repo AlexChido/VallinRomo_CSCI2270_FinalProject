@@ -24,7 +24,7 @@ class Tree
         void printPastFlips(); //finished
         void reset(); //finished
         void printCounter();
-        void compareProbabilities(long);
+        void compareProbabilities(double);
         void undoFlip();
         void countFlips();
         int Probabilities;

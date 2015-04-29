@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include <math.h>
+#include <cmath>
 #include <iomanip>
 #include <queue>
 #include <stdio.h>
@@ -237,34 +238,38 @@ void Tree::DeleteAll(Node *node){
 }
 
 
-void Tree::compareProbabilities(long chance){
-    long chances[10];
-    long bowling300 = 1/11500;
+void Tree::compareProbabilities(double chanceR){
+    if (chanceR > 100){
+        cout<<"Nothing is that certain, young one."<<endl;
+        return;
+    }
+    double chances[10];
+    double bowling300 = (1.0/11500.0)*100;
     chances[0] = bowling300;
-    long holeInOne = 1/5000;
+    double holeInOne = (1/5000.0)*100;
     chances[1] = holeInOne;
-    long beingAstronaut = 1/13200000;
+    double beingAstronaut = (1/13200000.0)*100;
     chances[2] = beingAstronaut;
-    long murder = 1/2;
+    double murder = (1/2.0)*100;
     chances[3] = murder;
-    long celebrityM = 1/3;
+    double celebrityM = (1/3.0)*100;
     chances[4] = celebrityM;
-    long hemmorrhoids = 1/25;
+    double hemmorrhoids = (1/25.0)*100;
     chances[5] = hemmorrhoids;
-    long marriage = 1/1.3;
+    double marriage = (1/1.3)*100;
     chances[6] = marriage;
-    long victim = 1/20;
+    double victim = (1/20.0)*100;
     chances[7] = victim;
-    long presHarvard = 1/3.58;
+    double presHarvard = (1/3.58)*100;
     chances[8] = presHarvard;
-    long beingAsian = 2/3;
+    double beingAsian = (2.0/3.0)*100;
     chances[9] = beingAsian;
 
-    long closestChance = 100;
+    double closestChance = 100;
     int chanceNum;
     string chanceMsg = "That is approximately the same chance of ";
-    for(int i = 0; i<9;i++){
-        int tempChance = abs(chance-chances[i]);
+    for(int i = 0; i<10;i++){
+        double tempChance = fabs(chanceR-chances[i]);
         if(tempChance<closestChance){
             closestChance = tempChance;
             chanceNum = i;

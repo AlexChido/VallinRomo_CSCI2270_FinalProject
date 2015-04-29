@@ -6,7 +6,7 @@
 using namespace std;
 
 void displayMenu(){
-    cout<<"======Main Menu======\n";
+    cout<<"\n======Main Menu======\n";
     cout<<"1. Build Probability Tree\n";
     cout<<"2. Flip Coin\n";
     cout<<"3. Calculate Probabilities\n";
@@ -102,7 +102,7 @@ int main()
             cout<<"What is the probability you want to compare?"<<endl;
             string cInput;
             cin>>cInput;
-            int number=atol(input.c_str());
+            double number=atof(cInput.c_str());
             DadTree->compareProbabilities(number);
             displayMenu();
         }
