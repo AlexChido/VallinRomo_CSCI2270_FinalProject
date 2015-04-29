@@ -142,7 +142,7 @@ void Tree::flipcoin(){
 /*
 Function Prototype:
     void Tree::initializeAllPoss();
-Function Description:
+Function Description: Activates allPossibilities function.
 Example:
 Precondition:
 Post condition:
@@ -159,7 +159,8 @@ if(counters==1)
 
 /*
 Function Prototype:
-Function Description:
+    int Tree::allPossibilities(Node*);
+Function Description: Counts how many leaves there are.
 Example:
 Precondition:
 Post condition:
@@ -178,7 +179,8 @@ return counters;
 
 /*
 Function Prototype:
-Function Description:
+    void Tree::printPastFlips();
+Function Description: Prints past flips in a list.
 Example:
 Precondition:
 Post condition:
@@ -202,6 +204,15 @@ void Tree::printPastFlips(){
     cout<<endl;
 }
 
+/*
+Function Prototype:
+    void Tree::undoFlip();
+Function Description: Undoes previous flip.
+Example:
+Precondition:
+Post condition:
+*/
+
 void Tree::undoFlip(){
     if(tracker->parent != NULL){
         tracker=tracker->parent;
@@ -222,10 +233,12 @@ void Tree::undoFlip(){
 
 /*
 Function Prototype:
-Function Description:
+    void Tree::countFlips();
+Function Description: Counts number and result of flips made.
 Example:
-Precondition:
-Post condition:
+    DadTree->countFlips();
+Precondition: Tree is built, and coin has been flipped.
+Post condition: prints number and results of flips.
 */
 void Tree::countFlips(){
     cout<<"You have flipped "<<flipCounter<<" times."<<endl;
@@ -240,10 +253,16 @@ Tree::~Tree()
 
 /*
 Function Prototype:
-Function Description:
-Example:
-Precondition:
-Post condition:
+    void Tree::forceFlip(bool);
+Function Description: Forces tracker to move left/right based on heads/tails preference
+                        inputed by user.
+Example: (see main)
+    Pseudo Example:
+    Input whether you want heads or tails, you say heads:
+    isHeads = true;
+    DadTree->forceFlip(isHeads);
+Precondition: Tree is built and there are available flips.
+Post condition: Tracker moves left/right based on heads/tails preference.
 */
 void Tree::forceFlip(bool isHeads){
     if (isHeads){ //heads
