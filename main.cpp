@@ -73,7 +73,7 @@ int main()
             displayMenu();
         }
         if(input == "8"){
-            DadTree->countFlips();
+            cout<<"You have flipped "<<DadTree->flipCounter<<" times"<<endl;
             displayMenu();
         }
         if(input == "9"){

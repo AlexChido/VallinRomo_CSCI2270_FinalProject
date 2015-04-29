@@ -37,7 +37,6 @@ void Tree::buildTree(Node *x, int current){
         buildTree(newTail, current);
     }
     else{
-        //Tree::printTree(root, 0);
         return;
     }
 }
@@ -46,22 +45,16 @@ void Tree::reset(){
     tracker=root;
     flipCounter = 0;
 }
-//this is mainly for debugging the build tree, but we can use it as another function if we want
+//needs to be fixed
 void Tree::printTree(Node* node, int indent=0){
-    if(node != NULL) {
-        if(node->right) {
-            printTree(node->right, indent+4);
-        }
-        if (indent) {
+     if(node != NULL) {
+        cout<< node->head << " \n";
+        if(node->left) printTree(node->left, indent+4);
+        if(node->right) printTree(node->right, indent+4);
+        /*if (indent) {
             std::cout << std::setw(indent) << ' ';
-        }
-        if (node->right) std::cout<<" /\n" << std::setw(indent) << ' ';
-        std::cout<< node->head << "\n ";
-        if(node->left) {
-            std::cout << std::setw(indent) << ' ' <<" \\\n";
-            printTree(node->left, indent+4);
-        }
-    }
+        }*/
+     }
 }
 
 void Tree::flipcoin(){
@@ -72,6 +65,7 @@ void Tree::flipcoin(){
         if(tracker->right!=NULL){
             cout<<"Heads"<<endl;
             tracker=tracker->left;
+            flipCounter++;
         }
         else //at the leaf
             cout<<"No more available flips"<<endl;
@@ -80,11 +74,11 @@ void Tree::flipcoin(){
         if(tracker->left!=NULL){
             cout<<"Tails"<<endl;
             tracker=tracker->right;
+            flipCounter++;
         }
         else //at the leaf
             cout<<"No more available flips"<<endl;
     }
-    flipCounter++;
 }
 
 void Tree::initializeAllPoss(){
