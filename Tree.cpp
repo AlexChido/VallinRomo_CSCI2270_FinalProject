@@ -9,6 +9,24 @@
 
 using namespace std;
 
+/*
+Function Prototype:
+Tree::Tree(int)
+
+Function Description:
+This function initializes the Tree that we are going to use to calculates the probabilities. Initializes all important variables, and calls the buildTree function.
+
+Example:
+Tree *DadTree;
+DadTree=new Tree(number);
+
+Precondition:
+There is no required precondition, because you just initialize the Tree
+
+Post condition:
+A new Tree object with the variable name of your choice will be made. size of the Tree is determinated, counters are set to 0, and we make a Tree with the number of layers equal to the size of the Tree.
+*/
+
 Tree::Tree(int sze)
 {
     root->parent=NULL;
