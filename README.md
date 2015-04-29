@@ -131,4 +131,4 @@ F) Contributors:
 We haven't had any other contributors so far.
 
 G) Open Isues/Bugs:
-We shall see.
+Currently we are unable to free the memory allocated by the tree.
