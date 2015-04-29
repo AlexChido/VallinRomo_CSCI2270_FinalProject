@@ -37,8 +37,10 @@ class Tree
     protected:
     private:
         //oid addCount();
+        int numOfHeads=0;
+        int numOfTails=0;
+        bool prevFlipWasHeads;
         int counters;
-
         vector <int> Paschal(int);
         int height();
         int sizer;

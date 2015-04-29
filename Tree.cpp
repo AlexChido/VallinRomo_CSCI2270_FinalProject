@@ -63,6 +63,8 @@ void Tree::buildTree(Node *x, int current){
 void Tree::reset(){
     tracker=root;
     flipCounter = 0;
+    numOfHeads = 0;
+    numOfTails = 0;
 }
 //needs to be fixed
 void Tree::printTree(Node* node, int indent=0){
@@ -84,20 +86,27 @@ void Tree::flipcoin(){
         if(tracker->right!=NULL){
             cout<<"Heads"<<endl;
             tracker=tracker->left;
-            flipCounter++;
+            numOfHeads++;
+            prevFlipWasHeads = true;
         }
-        else //at the leaf
+        else{ //at the leaf
             cout<<"No more available flips"<<endl;
+            return;
+        }
     }
     else{ //tails
         if(tracker->left!=NULL){
             cout<<"Tails"<<endl;
             tracker=tracker->right;
-            flipCounter++;
+            numOfTails++;
+            prevFlipWasHeads = false;
         }
-        else //at the leaf
+        else{ //at the leaf
             cout<<"No more available flips"<<endl;
+            return;
+        }
     }
+    flipCounter++;
 }
 
 void Tree::initializeAllPoss(){
@@ -144,13 +153,21 @@ void Tree::undoFlip(){
     }
     else{
         cout<<"You haven't flipped a coin yet."<<endl;
+        return;
     }
+    if(prevFlipWasHeads)
+        numOfHeads--;
+    else
+        numOfTails--;
+
     flipCounter--;
 }
 
 void Tree::countFlips(){
     cout<<"You have flipped "<<flipCounter<<" times."<<endl;
-
+    cout<<numOfHeads<<" were heads, "<<numOfTails<<" were tails."<<endl;
+    //2
+    //cout<<"wut"<<endl;
 }
 
 Tree::~Tree()
@@ -159,14 +176,20 @@ Tree::~Tree()
 
 void Tree::forceFlip(bool isHeads){
     if (isHeads){ //heads
-        if(tracker->left!=NULL)
+        if(tracker->left!=NULL){
             tracker=tracker->left;
+            numOfHeads++;
+            prevFlipWasHeads = true;
+        }
         else //at the leaf
             cout<<"No more available flips"<<endl;
     }
     else{ //tails
-        if(tracker->right!=NULL)
+        if(tracker->right!=NULL){
             tracker=tracker->right;
+            numOfTails++;
+            prevFlipWasHeads = false;
+        }
         else //at the leaf
             cout<<"No more available flips"<<endl;
     }
@@ -180,6 +203,7 @@ void Tree::probability(int head, int tail){
     int futureTails=0;
     Node *x=tracker;
     int h=Tree::height();
+    cout<<"Height: "<<h<<endl;
     if((head+tail)!=h){
         cout<<"0% probability"<<endl;
         return;
@@ -194,10 +218,10 @@ void Tree::probability(int head, int tail){
        head-=existingHeads;
        tail-=existingTails;
        Tree::initializeAllPoss();
-       cout<<"Prob "<<Probabilities<<endl;
+       cout<<"Prob: "<<Probabilities<<endl;
        vector <int> P=Tree::Paschal(h);
        double paths=P[P.size()-head+existingHeads];
-       cout<<"path "<<paths<<endl;
+       cout<<"Path: "<<paths<<endl;
        double prob=(paths/Probabilities);
        cout<<(prob*100)<<" % chance"<<endl;
 }
@@ -225,6 +249,10 @@ vector <int> Tree::Paschal(int height){
             P.push_back(val);
             val = val * (i - k) / (k + 1);
         }
+    }
+    for(int i =0;i<P.size();i++){
+        cout<<P[i];
+        cout<<endl;
     }
     return P;
 }
