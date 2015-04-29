@@ -28,7 +28,6 @@ There is no required precondition, because you just initialize the Tree
 Post condition:
 A new Tree object with the variable name of your choice will be made. size of the Tree is determinated, counters are set to 0, and we make a Tree with the number of layers equal to the size of the Tree.
 */
-
 Tree::Tree(int sze)
 {
     root->parent=NULL;
@@ -40,13 +39,20 @@ Tree::Tree(int sze)
 
 /*
 Function Prototype:
-    void Tree::buildTree(Node*, int);
-Function Description: Builds heads tails BST.
+void Tree::buildTree(Node*, int)
+
+Function Description:
+This function builds the Tree that we are going to use for the coin flips, it is called recursively based on the size that we want the Tree to be. It will set a Boolean variable called "head" to be equal to True if we want the node to be a heads, or False if we want the node to be tails.
+We set the Tree so all the right children of the parent node, are tails, and all the left children are heads.
+
 Example:
-    in constructor:
-    Tree::buildTree(root, 0);
-Precondition: Program must have started.
-Post condition: Heads/Tails BST is built.
+buildTree(root, 1);
+
+Precondition:
+Normally, we will call this function inside the initializing Tree function, so the only precondition necessary is to call for a new Tree first, and after the Tree initializes we call the buildTree function.
+
+Post condition:
+The result of the function, is that the Tree will be built with the number of layers specified, and with all its nodes being either heads or tails. This based on the position, all right children are tails, and all left children are heads.
 */
 void Tree::buildTree(Node *x, int current){
     if(current<sizer){
@@ -73,12 +79,23 @@ void Tree::buildTree(Node *x, int current){
 
 /*
 Function Prototype:
-    void Tree::reset();
-Function Description: All flips are reset, tracker brought back to root.
+void Tree::reset()
+
+Function Description:
+This function resets the flips you have previously made. it restarts the flipcounter, the number of heads, the number of tails, and grabs the tracker and places it back to the root of the Tree.
+
 Example:
-    DadTree->reset();
-Precondition: Tree must be built.
-Post condition: There are now zero flips, but same tree is maintained;
+Tree* mytreeptr = new Tree(5);
+.
+. //after a few flips
+.
+mytreeptr->reset();
+
+Precondition:
+Normally you will like to have done at least one flip before calling this function, for it do something. In the case you have not done any flips and you call this function, it will not do anything because all counters are on ceros and the tracker is already the root.
+
+Post condition:
+After calling this function, the Tree that you already have will be reset, which means that the tracker will be root again, and all flip counters, head counters, tail counters will go back to 0.
 */
 void Tree::reset(){
     tracker=root;
@@ -86,6 +103,25 @@ void Tree::reset(){
     numOfHeads = 0;
     numOfTails = 0;
 }
+
+/*
+Function Prototype:
+void Tree::printTree(Node*, int)
+
+Function Description:
+Simple function that uses the Preorder tree transversal algorithm to print the contents of the Tree.
+It is called recursively, according to the algorithm previously mentioned.
+This is actually only a debugging function.
+
+Example:
+printTree(root, 0)
+
+Precondition:
+You can call this function after your Tree has being build, this is because you will not be able to print anything with an empty Tree.
+
+Post condition:
+you will see on the screen the contents of the Tree in post order transversal.
+*/
 //needs to be fixed
 void Tree::printTree(Node* node, int indent=0){
      if(node != NULL) {
@@ -100,12 +136,23 @@ void Tree::printTree(Node* node, int indent=0){
 
 /*
 Function Prototype:
-    void Tree::flipcoin();
-Function Description: Flips coin and moves tracker node based on result.
+void Tree::flipcoin()
+
+Function Description:
+This function will randomly determine if the next flip is heads of tails. The process is simple:
+We use a random number generator (1 to 10), if the number generated turns out to be odd, we move the tracker to the left child of the current node (which represents heads). If the random number turns out to be even, we move the tracker to the right child of the current node (which is tails). In case that the children of the current node are NULL (that means that there are no tosses left),  you will see a message saying "No more available flips".
+Also the flip counter increases by 1.
+
 Example:
-    DadTree->flipcoin();
-Precondition: Tree must be built and there must be flips remaining (not at leaf)
-Post condition: Tracker is moved down tree left or right based on heads/tails result.
+Tree* newTree = new Tree(3);
+newTree->flipcoin();
+
+Precondition:
+You can only call the flip coin function after you have build a Tree, otherwise the tracker will not be initialized, and you can't move something non existing.
+
+Post condition:
+After the function is called, the Tracker will have moved one Tree layer down, and you will see on the screen, the result of the toss; either "Heads" or "Tails".
+And the flipcounter will increase by one.
 */
 void Tree::flipcoin(){
 //0 is Tails and 1 is Heads
@@ -141,11 +188,21 @@ void Tree::flipcoin(){
 
 /*
 Function Prototype:
-    void Tree::initializeAllPoss();
-Function Description: Activates allPossibilities function.
+void Tree::initializeAllPoss()
+
+Function Description:
+This function is a helper function for the allPossibilities function.
+It basically calls a new Node equal to the tracker and calls the allPossibilities function.
+
 Example:
+Tree* yourTree = new Tree(4);
+yourTree->initializeAllPoss();
+
 Precondition:
+You will most likely have the Tree already initialized to call this. if the Tree has no nodes yet, then we  will not be able to scan the nodes (which will not yet exist at that point).
+
 Post condition:
+You will be ready to call the allPossibilities function.
 */
 void Tree::initializeAllPoss(){
 //helper function for allPossibilities
@@ -159,11 +216,20 @@ if(counters==1)
 
 /*
 Function Prototype:
-    int Tree::allPossibilities(Node*);
-Function Description: Counts how many leaves there are.
+int Tree::allPossibilities(Node*)
+
+Function Description:
+This function counts the number of possible outcomes that you could have, based on the position of the tracker. It is called recursively to count all the possible sub trees.
+
 Example:
+int num;
+num = allPosibilities(newNode);
+
 Precondition:
+You should have called the InitializeAllPoss function first, because it will set a pointer equal to the tracker, and use it on this function. This is for preventing that the tracker moves, and altering the next flip.
+
 Post condition:
+You will see on the screen a number that is the possible outcomes that you can get.
 */
 int Tree::allPossibilities(Node *x){
 //count the leaves of the subtree recursively
@@ -180,10 +246,22 @@ return counters;
 /*
 Function Prototype:
     void Tree::printPastFlips();
-Function Description: Prints past flips in a list.
+
+Function Description:
+Prints the past flips you have done in a list.
+
 Example:
+Tree* DadTree = new Tree(3);
+DadTree->flipcoin();
+DadTree->flipcoin();
+DadTree->flipcoin();
+DadTree->printPastFlips();
+
 Precondition:
+it is convinient that you do at least 1 flip before calling the function, otherwise there will be nothing to print
+
 Post condition:
+you will see on the screen the flips you made before, in order.
 */
 void Tree::printPastFlips(){
     if(flipCounter==0){
@@ -207,10 +285,19 @@ void Tree::printPastFlips(){
 /*
 Function Prototype:
     void Tree::undoFlip();
-Function Description: Undoes previous flip.
+
+Function Description:
+Undoes previous flip, that means that the tracker returns to the parent of the node it is actually pointing to.
+
 Example:
+Tree myTree = new Tree(5);
+myTree->undoFlip();
+
 Precondition:
+you should have done at least one flip before calling this function, otherwise it will mark an error
+
 Post condition:
+The tracker will return to the parent node, and the heads or tails counter will decrease by one
 */
 
 void Tree::undoFlip(){
@@ -234,11 +321,18 @@ void Tree::undoFlip(){
 /*
 Function Prototype:
     void Tree::countFlips();
-Function Description: Counts number and result of flips made.
+
+Function Description:
+Counts number and result of flips made.
+
 Example:
-    DadTree->countFlips();
-Precondition: Tree is built, and coin has been flipped.
-Post condition: prints number and results of flips.
+DadTree->countFlips();
+
+Precondition:
+Tree should be built before this function is called, and at least one coin should have been flipped.
+
+Post condition:
+prints number and results of flips.
 */
 void Tree::countFlips(){
     cout<<"You have flipped "<<flipCounter<<" times."<<endl;
@@ -254,15 +348,20 @@ Tree::~Tree()
 /*
 Function Prototype:
     void Tree::forceFlip(bool);
-Function Description: Forces tracker to move left/right based on heads/tails preference
-                        inputed by user.
-Example: (see main)
-    Pseudo Example:
-    Input whether you want heads or tails, you say heads:
-    isHeads = true;
-    DadTree->forceFlip(isHeads);
-Precondition: Tree is built and there are available flips.
-Post condition: Tracker moves left/right based on heads/tails preference.
+
+Function Description:
+Forces tracker to move left/right based on heads/tails preference
+inputed by user.
+
+Example:
+Input whether you want heads or tails, you say heads:
+isHeads = true;
+DadTree->forceFlip(isHeads);
+
+Precondition:
+Tree should be built and there should be at least one available flip left.
+
+Post condition: Tracker moves left/right based on heads/tails preference of the user.
 */
 void Tree::forceFlip(bool isHeads){
     if (isHeads){ //heads
@@ -289,14 +388,21 @@ void Tree::forceFlip(bool isHeads){
 /*
 Function Prototype:
     void Tree::probability(int, int);
-Function Description: Calculates probability of getting desired output using user input.
+
+Function Description:
+Calculates probability of getting desired output using user input.
+
 Example:
-    cout<<"Enter number of heads and tails you wish to flip: "<<endl;
-    cin>>head;
-    cin>>tail;
-    DadTree->probability(head, tail);
-Precondition: Tree must be built, input of heads+tails must equal height of tree or else there will be 0% probability
-Post condition: prints chance of input possibility
+cout<<"Enter number of heads and tails you wish to flip: "<<endl;
+cin>>head;
+cin>>tail;
+DadTree->probability(head, tail);
+
+Precondition:
+Tree must be built, input of heads+tails must equal height of tree or else there will be 0% probability
+
+Post condition:
+prints chance of input possibility
 */
 void Tree::probability(int head, int tail){
     int actualHeads = head - numOfHeads;
@@ -322,12 +428,18 @@ void Tree::probability(int head, int tail){
 /*
 Function Prototype:
     int Tree::height();
+
 Function Description:
     Finds height of the tree at current node;
+
 Example: (see probability function)
-    int h=Tree::height();
-Precondition: Tree must be built, tracker node can be at any position.
-Post condition: Height of current spot in tree is returned;
+int h=Tree::height();
+
+Precondition:
+Tree must be built already, tracker node can be at any position.
+
+Post condition:
+Height of current spot in tree is returned;
 */
 int Tree::height(){
     counters=1;
@@ -345,15 +457,20 @@ return counters;
 /*
 Function Prototype:
     vector<int> Tree::Paschal(int height);
-Function Description:
-    Stores required size of Pascals triangle in vector.
-Example: (see probability function)
-    height = 5;
-    vector <int> P=Tree::Paschal(height);
 
-Precondition: Height must be calculated via height function.
-Post condition: A vector will be stored based on height input in
-                order to find number of paths to get desired result.
+Function Description:
+Stores required size of Pascals triangle in vector.
+
+Example: (see probability function)
+height = 5;
+vector <int> P=Tree::Paschal(height);
+
+Precondition:
+Height must be calculated via height function.
+
+Post condition:
+A vector will be stored based on height input in
+order to find number of paths to get desired result.
 */
 vector <int> Tree::Paschal(int height){
     vector <int> P;
@@ -376,13 +493,19 @@ vector <int> Tree::Paschal(int height){
 /*
 Function Prototype:
     void Tree::DeleteAll(Node*);
+
 Function Description:
-    Deletes all the nodes in the tree to free memory;
+Deletes all the nodes in the tree to free memory;
+
 Example:
-    DadTree=new Tree(number);
-    DadTree->DeleteAll(Node *root);
-Precondition: A tree is built with all of its nodes.
-Post condition: All of the nodes are now freed memory.
+DadTree=new Tree(number);
+DadTree->DeleteAll(Node *root);
+
+Precondition:
+A tree is built with all of its nodes.
+
+Post condition:
+All of the nodes are now freed memory.
 */
 void Tree::DeleteAll(Node *node){
     if(node->left!=NULL)
@@ -395,15 +518,19 @@ void Tree::DeleteAll(Node *node){
 /*
 Function Prototype:
     void Tree::compareProbabilities(double);
+
 Function Description:
-    Compares input probability to stored probabilities and outputs event with similar probability.
+Compares input probability to stored probabilities and outputs event with similar probability.
+
 Example:
-    Tree * DadTree;
-    DadTree->compareProbabilities;
+Tree * DadTree;
+DadTree->compareProbabilities;
+
 Precondition:
-    Input can be any number, but numbers over 100 get 'rejected'.
+Input can be any number, but numbers over 100 get 'rejected'.
+
 Post condition:
-    Terminal will print results.
+Terminal will print results.
 */
 void Tree::compareProbabilities(double chanceR){
     if (chanceR > 100){
