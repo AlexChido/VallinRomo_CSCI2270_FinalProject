@@ -122,7 +122,9 @@ E) Group Members:
 This is a list of the members of the team:
 
  1.- Lauren McIntire
+ 
  2.- Cody Towstik
+ 
  3.- Alejandro Vallin Romo
 
 F) Contributors:
