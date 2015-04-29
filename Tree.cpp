@@ -37,6 +37,13 @@ Tree::Tree(int sze)
     Tree::buildTree(root, 0);
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::buildTree(Node *x, int current){
     if(current<sizer){
         Node *newHead=new Node;
@@ -60,6 +67,13 @@ void Tree::buildTree(Node *x, int current){
     }
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::reset(){
     tracker=root;
     flipCounter = 0;
@@ -78,6 +92,13 @@ void Tree::printTree(Node* node, int indent=0){
      }
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::flipcoin(){
 //0 is Tails and 1 is Heads
 //random number generator indicates heads or tails
@@ -109,6 +130,13 @@ void Tree::flipcoin(){
     flipCounter++;
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::initializeAllPoss(){
 //helper function for allPossibilities
 //new pointer so we don't lose track of the tracker pointer position
@@ -119,7 +147,13 @@ if(counters==1)
     counters=0;
 }
 
-
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 int Tree::allPossibilities(Node *x){
 //count the leaves of the subtree recursively
 if(x->right!=NULL)
@@ -132,6 +166,13 @@ else if(x->left==NULL&&x->right==NULL)
 return counters;
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::printPastFlips(){
     if(flipCounter==0){
         cout<<"You haven't flipped a coin yet."<<endl;
@@ -169,6 +210,13 @@ void Tree::undoFlip(){
     flipCounter--;
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::countFlips(){
     cout<<"You have flipped "<<flipCounter<<" times."<<endl;
     cout<<numOfHeads<<" were heads, "<<numOfTails<<" were tails."<<endl;
@@ -180,6 +228,13 @@ Tree::~Tree()
 {
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::forceFlip(bool isHeads){
     if (isHeads){ //heads
         if(tracker->left!=NULL){
@@ -202,6 +257,13 @@ void Tree::forceFlip(bool isHeads){
     flipCounter++;
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::probability(int head, int tail){
     int actualHeads = head - numOfHeads;
     int actualTails = tail - numOfTails;
@@ -223,6 +285,13 @@ void Tree::probability(int head, int tail){
        actualHeads<<" more heads and "<<actualTails<<" more tails."<<endl;
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 int Tree::height(){
     counters=1;
     if(tracker->right!=NULL)
@@ -236,6 +305,13 @@ int Tree::height(){
 return counters;
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 vector <int> Tree::Paschal(int height){
     vector <int> P;
     for (int i = 0; i < height; i++)
@@ -254,6 +330,13 @@ vector <int> Tree::Paschal(int height){
     return P;
 }
 
+/*
+Function Prototype:
+Function Description:
+Example:
+Precondition:
+Post condition:
+*/
 void Tree::DeleteAll(Node *node){
     if(node->left!=NULL)
         DeleteAll(node->left);
@@ -262,7 +345,19 @@ void Tree::DeleteAll(Node *node){
     delete node;
 }
 
-
+/*
+Function Prototype:
+    void Tree::compareProbabilities(double);
+Function Description:
+    Compares input probability to stored probabilities and outputs event with similar probability.
+Example:
+    Tree * DadTree;
+    DadTree->compareProbabilities;
+Precondition:
+    Input can be any number, but numbers over 100 get 'rejected'.
+Post condition:
+    Terminal will print results.
+*/
 void Tree::compareProbabilities(double chanceR){
     if (chanceR > 100){
         cout<<"Nothing is that certain, young one."<<endl;
