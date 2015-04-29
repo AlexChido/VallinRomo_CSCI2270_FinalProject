@@ -121,9 +121,9 @@ The only requirement is that you should have some kind of platform that enables 
 E) Group Members:
 This is a list of the members of the team:
 
-1.- Lauren McIntire
-2.- Cody Towstik
-3.- Alejandro Vallin Romo
+ 1.- Lauren McIntire
+ 2.- Cody Towstik
+ 3.- Alejandro Vallin Romo
 
 F) Contributors:
 We haven't had any other contributors so far.
