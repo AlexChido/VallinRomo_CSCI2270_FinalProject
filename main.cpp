@@ -6,16 +6,16 @@
 using namespace std;
 
 void displayMenu(){
-    cout<<"\n======Main Menu======\n";
-    cout<<"1. Build Probability Tree\n";
-    cout<<"2. Flip Coin\n";
-    cout<<"3. Calculate Probabilities\n";
-    cout<<"4. Reset Tree\n";
-    cout<<"5. Count Total Possible Outcomes\n";
-    cout<<"6. Show Previous Flip Outcomes\n";
-    cout<<"7. Undo Flip\n";
-    cout<<"8. Show Number Of Flips\n";
-    cout<<"9. Force Flip\n";
+    cout<<"\n    ======Main Menu======\n";
+    cout<<" 1. Build Probability Tree\n";
+    cout<<" 2. Flip Coin\n";
+    cout<<" 3. Calculate Probabilities\n";
+    cout<<" 4. Reset Tree\n";
+    cout<<" 5. Count Total Possible Outcomes\n";
+    cout<<" 6. Show Previous Flip Outcomes\n";
+    cout<<" 7. Undo Flip\n";
+    cout<<" 8. Show Number Of Flips\n";
+    cout<<" 9. Force Flip\n";
     cout<<"10. Compare Odds\n";
     cout<<"11. Quit\n";
 }
@@ -33,7 +33,7 @@ int main()
         cout<<endl;
         if(input == "1"){
             string num;
-            cout<<"How many tosses do you want to make?\n";
+            cout<<"How many tosses do you want to make?  ";
             getline(cin, num);
             int number=atoi(num.c_str());
             DadTree=new Tree(number);

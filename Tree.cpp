@@ -133,13 +133,19 @@ return counters;
 }
 
 void Tree::printPastFlips(){
+    if(flipCounter==0){
+        cout<<"You haven't flipped a coin yet."<<endl;
+        return;
+    }
+
     Node *x=tracker;
     queue <string> Outcomes;
+    cout<<"  ";
     while(x!=root){
         if(x->head==true)
-            cout<<"Head ";
+            cout<<"Head <- ";
         else
-            cout<<"Tail ";
+            cout<<"Tail <- ";
         x=x->parent;
     }
     cout<<endl;
@@ -197,36 +203,24 @@ void Tree::forceFlip(bool isHeads){
 }
 
 void Tree::probability(int head, int tail){
-    int existingHeads=0;
-    int existingTails=0;
-    int futureHeads=0;
-    int futureTails=0;
-
-    Node *x=tracker;
+    int actualHeads = head - numOfHeads;
+    int actualTails = tail - numOfTails;
+    //Node *x=tracker;
     int h=Tree::height();
     cout<<"Height: "<<h<<endl;
-    if((head+tail)!=h){
+    if((actualHeads+actualTails)!=h){
         cout<<"0% probability"<<endl;
         return;
         }
-        /*
-    while (x!=root){
-        if (x->head==true)
-            existingHeads++;
-        else
-            existingTails++;
-        x=x->parent;
-    }
-    */
-       head-=existingHeads;
-       tail-=existingTails;
+
        Tree::initializeAllPoss();
-       cout<<"Prob: "<<Probabilities<<endl;
+       //cout<<"Prob: "<<Probabilities<<endl;
        vector <int> P=Tree::Paschal(h);
-       double paths=P[P.size()-head]; //took out +existingHeads
-       cout<<"Path: "<<paths<<endl;
+       double paths=P[P.size()-actualHeads];
+       //cout<<"Path: "<<paths<<endl;
        double prob=(paths/Probabilities);
-       cout<<(prob*100)<<" % chance"<<endl;
+       cout<<(prob*100)<<" % chance of getting "<<
+       actualHeads<<" more heads and "<<actualTails<<" more tails."<<endl;
 }
 
 int Tree::height(){
@@ -254,8 +248,8 @@ vector <int> Tree::Paschal(int height){
         }
     }
     for(int i =0;i<P.size();i++){
-        cout<<P[i];
-        cout<<endl;
+        //cout<<P[i];
+        //cout<<endl;
     }
     return P;
 }

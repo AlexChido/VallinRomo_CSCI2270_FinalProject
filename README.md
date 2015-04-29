@@ -6,16 +6,16 @@ The purpose of this project is to calculate probabilities when playing the game 
 B) How To Run:
 This program is very straight forward and easy to use. When you start the program, you will see a menu similar to this one:
 
-======Main Menu======
- 1. Build Probability Tree
- 2. Flip Coin
- 3. Calculate Probabilities
- 4. Reset Tree
- 5. Count Total Probabilities
- 6. Show Previous Flip Outcomes
- 7. Redo Flip
- 8. Show Number Of Flips
- 9. Force Flip
+	======Main Menu======
+  1. Build Probability Tree
+  2. Flip Coin
+  3. Calculate Probabilities
+  4. Reset Tree
+  5. Count Total Probabilities
+  6. Show Previous Flip Outcomes
+  7. Redo Flip
+  8. Show Number Of Flips
+  9. Force Flip
  10. Compares Odd
  11. Quit
 
@@ -62,12 +62,12 @@ For example, if you initialized the tree to toss the coin 2 times, you will have
 6.- Show Previous Flip Outcomes:
 This item will show you on just one line, the outcomes of the previous coin flips you made, including the force flip ones.
 You will most likely select this option if you forgot exactly the outcomes you got previously, and you need to know a certain probability for example.
-You will not be prompted with anything, so after pressing "6" and ENTER, you will see on the screen the outcomes in order.
+You will not be prompted with anything, so after pressing "6" and ENTER, you will see on the screen the outcomes in order from latest flip to first flip.
 For example:
 
-you got: - heads - tails - tails - heads - tails -
+You got:  Heads <- Tails <- Tails <- Heads <- Tails <-
 
-This will show in case you did 5 coin flips, and your first flip ended up in heads, then 2 tails, then heads again and the last you made tails.
+This will show in case you did 5 coin flips, and your latest flip ended up as heads and your first flip was tails.
 
 7.- Redo Flip:
 This is a useful option if you want to compare 2 very close possibilities. 
@@ -100,10 +100,10 @@ After you do this, the program tosses the coin to end up exactly as you said on 
 
 10.- Compares Odd:
 This is a fun one.
-Based on the coin tosses that you already made, it gives you a fun fact about the probability you just got.
-For example, if you got 3 heads in a row, you will have a message saying:
+Based on a probability that you input, the program will tell you a random even that has an equal likelihood.
+For example, if you enter 70:
 
-The probability of obtaining 3 heads, 0 tails... its approximately the same as if you where Mexican and you have 2 kids, and one of them is assigned to military service. 
+The closest probability saved in the program to 70% is 66% which is the chance of being born Asian, so the program will tell you so!
 
 11.- Quit:
 I don't know why am I even explaining this one, but just in case.
