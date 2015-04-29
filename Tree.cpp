@@ -287,10 +287,13 @@ void Tree::probability(int head, int tail){
 
 /*
 Function Prototype:
+    int Tree::height();
 Function Description:
-Example:
-Precondition:
-Post condition:
+    Finds height of the tree at current node;
+Example: (see probability function)
+    int h=Tree::height();
+Precondition: Tree must be built, tracker node can be at any position.
+Post condition: Height of current spot in tree is returned;
 */
 int Tree::height(){
     counters=1;
@@ -307,10 +310,16 @@ return counters;
 
 /*
 Function Prototype:
+    vector<int> Tree::Paschal(int height);
 Function Description:
-Example:
-Precondition:
-Post condition:
+    Stores required size of Pascals triangle in vector.
+Example: (see probability function)
+    height = 5;
+    vector <int> P=Tree::Paschal(height);
+
+Precondition: Height must be calculated via height function.
+Post condition: A vector will be stored based on height input in
+                order to find number of paths to get desired result.
 */
 vector <int> Tree::Paschal(int height){
     vector <int> P;
@@ -332,10 +341,14 @@ vector <int> Tree::Paschal(int height){
 
 /*
 Function Prototype:
+    void Tree::DeleteAll(Node*);
 Function Description:
+    Deletes all the nodes in the tree to free memory;
 Example:
-Precondition:
-Post condition:
+    DadTree=new Tree(number);
+    DadTree->DeleteAll(Node *root);
+Precondition: A tree is built with all of its nodes.
+Post condition: All of the nodes are now freed memory.
 */
 void Tree::DeleteAll(Node *node){
     if(node->left!=NULL)
