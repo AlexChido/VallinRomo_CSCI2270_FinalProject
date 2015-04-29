@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <queue>
 #include <stdio.h>
+#include <time.h>
 
 using namespace std;
 
@@ -39,10 +40,13 @@ Tree::Tree(int sze)
 
 /*
 Function Prototype:
-Function Description:
+    void Tree::buildTree(Node*, int);
+Function Description: Builds heads tails BST.
 Example:
-Precondition:
-Post condition:
+    in constructor:
+    Tree::buildTree(root, 0);
+Precondition: Program must have started.
+Post condition: Heads/Tails BST is built.
 */
 void Tree::buildTree(Node *x, int current){
     if(current<sizer){
@@ -69,10 +73,12 @@ void Tree::buildTree(Node *x, int current){
 
 /*
 Function Prototype:
-Function Description:
+    void Tree::reset();
+Function Description: All flips are reset, tracker brought back to root.
 Example:
-Precondition:
-Post condition:
+    DadTree->reset();
+Precondition: Tree must be built.
+Post condition: There are now zero flips, but same tree is maintained;
 */
 void Tree::reset(){
     tracker=root;
@@ -94,14 +100,17 @@ void Tree::printTree(Node* node, int indent=0){
 
 /*
 Function Prototype:
-Function Description:
+    void Tree::flipcoin();
+Function Description: Flips coin and moves tracker node based on result.
 Example:
-Precondition:
-Post condition:
+    DadTree->flipcoin();
+Precondition: Tree must be built and there must be flips remaining (not at leaf)
+Post condition: Tracker is moved down tree left or right based on heads/tails result.
 */
 void Tree::flipcoin(){
 //0 is Tails and 1 is Heads
 //random number generator indicates heads or tails
+    srand(time(NULL));
     int flip=rand() % 2;
     if (flip==1){ //heads
         if(tracker->right!=NULL){
@@ -132,6 +141,7 @@ void Tree::flipcoin(){
 
 /*
 Function Prototype:
+    void Tree::initializeAllPoss();
 Function Description:
 Example:
 Precondition:
@@ -259,10 +269,15 @@ void Tree::forceFlip(bool isHeads){
 
 /*
 Function Prototype:
-Function Description:
+    void Tree::probability(int, int);
+Function Description: Calculates probability of getting desired output using user input.
 Example:
-Precondition:
-Post condition:
+    cout<<"Enter number of heads and tails you wish to flip: "<<endl;
+    cin>>head;
+    cin>>tail;
+    DadTree->probability(head, tail);
+Precondition: Tree must be built, input of heads+tails must equal height of tree or else there will be 0% probability
+Post condition: prints chance of input possibility
 */
 void Tree::probability(int head, int tail){
     int actualHeads = head - numOfHeads;
