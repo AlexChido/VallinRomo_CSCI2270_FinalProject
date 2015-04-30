@@ -595,6 +595,7 @@ void Tree::compareProbabilities(double chanceR){
         break;
     case 5:
         cout<<chanceMsg<<"getting a hemorrhoid."<<endl;
+        break;
     case 6:
         cout<<chanceMsg<<"a marriage lasting at least 15 years."<<endl;
         break;
