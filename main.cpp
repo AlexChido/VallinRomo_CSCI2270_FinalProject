@@ -26,7 +26,7 @@ int main()
 {
     string input;
     Tree *DadTree;//I don-t know if this is the correct way to inititallize the tree
-    Node *root = new Node;
+    //Node *root = new Node;
 
     displayMenu();
     while(getline(cin,input)){
@@ -62,6 +62,8 @@ int main()
         }
         if(input == "5"){
             DadTree->initializeAllPoss();
+            if(DadTree->Probabilities==1)
+                DadTree->Probabilities=0;
             cout<<DadTree->Probabilities<<" total possible outcomes"<<endl;
             displayMenu();
         }
@@ -108,7 +110,7 @@ int main()
             displayMenu();
         }
         if(input == "11"){
-            //DadTree->DeleteAll(root);
+            DadTree->DeleteAll(DadTree->root);
             break;
         }
     }

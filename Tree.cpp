@@ -410,10 +410,18 @@ void Tree::probability(int head, int tail){
     //Node *x=tracker;
     int h=Tree::height();
     cout<<"Height: "<<h<<endl;
-    if((actualHeads+actualTails)!=h){
+    if((actualHeads+actualTails)!=h){ //too many or too little flips
         cout<<"0% probability"<<endl;
         return;
         }
+    if(actualHeads==0&&actualTails==0){ //already happened
+        cout<< "100% probability"<<endl;
+        return;
+    }
+    else if (h==0){ //tree at leaves and no more available flips
+        cout<<"0% probability"<<endl;
+        return;
+    }
 
        Tree::initializeAllPoss();
        //cout<<"Prob: "<<Probabilities<<endl;
