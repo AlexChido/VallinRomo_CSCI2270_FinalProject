@@ -4,6 +4,7 @@ A) Project Summary:
 The purpose of this project is to calculate probabilities when playing the game of flipping a coin. It is easy to calculate probability of getting 2 heads for example, but what about the probability of getting in total 2 heads and 3 tails after you got 2 tails already, not easy right? Well this program will help solve those kind of problems. To archive this we use a binary tree that we can transverse to get this probabilities. 
 
 B) How To Run:
+Clone the repo and open the coinFlipper project. Then compile and run.
 This program is very straight forward and easy to use. When you start the program, you will see a menu similar to this one:
 
 	======Main Menu======
