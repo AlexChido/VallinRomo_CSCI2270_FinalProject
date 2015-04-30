@@ -131,5 +131,4 @@ F) Contributors:
 We haven't had any other contributors so far.
 
 G) Open Isues/Bugs:
-Currently we are unable to free the memory allocated by the tree.
 For some reason the first flip is always heads. This may be an issue with the random number generator.
