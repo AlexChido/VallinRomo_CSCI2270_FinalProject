@@ -27,7 +27,7 @@ int main()
     string input;
     Tree *DadTree;//I don-t know if this is the correct way to inititallize the tree
     //Node *root = new Node;
-
+    bool built=false;
     displayMenu();
     while(getline(cin,input)){
         cout<<endl;
@@ -38,6 +38,7 @@ int main()
             int number=atoi(num.c_str());
             DadTree=new Tree(number);
              //If we construct tree here I get an error in future functions
+            built=true;
             displayMenu();
         }
         if(input == "2"){
@@ -110,7 +111,8 @@ int main()
             displayMenu();
         }
         if(input == "11"){
-            DadTree->DeleteAll(DadTree->root);
+            if(built==true)
+                DadTree->DeleteAll(DadTree->root);
             break;
         }
     }

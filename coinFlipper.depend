@@ -20,16 +20,16 @@
 	<stdio.h>
 	<time.h>
 
-1430352222 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/main.cpp
+1430356951 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/main.cpp
 	<iostream>
 	"Tree.h"
 	<string>
 	<stdlib.h>
 
-1430333028 /home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/Tree.h
+1430356943 /home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/Tree.h
 	<vector>
 
-1430352222 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/Tree.cpp
+1430353638 source:/home/user/VallinRomo_CSCI2270_FinalProject/VallinRomo_CSCI2270_FinalProject/Tree.cpp
 	"Tree.h"
 	<iostream>
 	<cstdlib>
