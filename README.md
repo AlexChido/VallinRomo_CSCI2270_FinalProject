@@ -129,7 +129,7 @@ This is a list of the members of the team:
  3.- Alejandro Vallin Romo
 
 F) Contributors:
-We haven't had any other contributors so far.
+Cody Charland
 
 G) Open Isues/Bugs:
 For some reason the first flip is always heads. This may be an issue with the random number generator.
